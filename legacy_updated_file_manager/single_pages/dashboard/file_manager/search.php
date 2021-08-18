@@ -1,0 +1,27 @@
+<?php defined('C5_EXECUTE') or die("Access Denied.");
+echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('File Manager'), array(t('Add, search, replace and modify the files for your website.'), 'https://www.concrete5.org/documentation/editors-guide/dashboard/file-manager/'), false, false);
+
+$c = Page::getCurrentPage();
+$ocID = $c->getCollectionID();
+$fp = FilePermissions::getGlobal();
+
+if ($fp->canAddFile() || $fp->canSearchFiles()) { ?>
+
+	<div class="ccm-pane-options" id="ccm-<?php echo $searchInstance?>-pane-options">
+		<div class="ccm-file-manager-search-form">
+			<?php Loader::element('file_manager/search_form_advanced', array('searchInstance' => $searchInstance, 'searchRequest' => $searchRequest, 'searchType' => 'DASHBOARD'), 'legacy_updated_file_manager'); ?>
+		</div>
+	</div>
+
+	<?php Loader::element('file_manager/search_results', array('searchInstance' => $searchInstance, 'searchRequest' => $searchRequest, 'columns' => $columns, 'searchType' => 'DASHBOARD', 'files' => $files, 'fileList' => $fileList), 'legacy_updated_file_manager'); ?>
+
+<?php } else { ?>
+
+	<div class="ccm-pane-body">
+		<p><?php echo t("You do not have access to the file manager.");?></p>
+	</div>	
+	<div class="ccm-pane-footer"></div>
+
+<?php }
+
+echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(false); ?>
