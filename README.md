@@ -6,6 +6,8 @@ The main purpose of this package is to convert the file uploader within the File
 ## Notes/Precautions
 Since this package overrides core Concrete5 functionality, and has not been tested with other custom code or packages that alter the File Manager, you should install it at your own risk. It is recommended to test installation in a development or preview environment prior to installing on any production website. This software is provided "as-is" without guaranteed support or warranty (although bug reports through GitHub are certainly appreciated). See below for installation and uninstallation notes.
 
+This package has been tested with Concrete5 version 5.6.4.0 running on PHP 7.3. Although ther versions of Legacy Concrete5 and PHP may work, full functionality is not guaranteed.
+
 ## Installation
 Download the .zip archive of the current package and insert into the "packages" directory of your website, then install the package through the dashboard.
 
